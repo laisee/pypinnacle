@@ -1,0 +1,21 @@
+import json
+import time
+
+class League(object):
+    """An instance of a League in which games are held
+
+    Attributes:
+        id:   ID is league database key
+        name:  name of the league e.g. "NFL football"
+        hometeam: if home team is team1 or team2
+        timestamp: unix timestamp(UTC) when sport record was downloaded 
+    """
+
+    def __init__(self, id, name, hometeam):
+        self.id = id
+        self.name = name
+        self.hometeam = hometeam
+        self.timestamp = int(time.time())
+
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__,sort_keys=True, indent=4)
