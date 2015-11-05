@@ -1,5 +1,5 @@
 import base64,requests, json, sys, time, traceback
-from bbninja_models import *
+from pinnacle_models import *
 
 def LeagueLOL():
     return "5474,4586, 191533,5024,5467,5072,48012,9440,4680, 4979, 191468, 10269, 9754, 10392, 187724, 5625, 7245, 10422, 9457, 10093, 9667, 6262, 192095" 

@@ -70,16 +70,16 @@ def reload_sports():
 
 def reload(name='ALL'):
     if name == 'SPORTS' or name == 'ALL':
-        print "\nUpdating bbninja SPORTS data\n"
+        print "\nUpdating SPORTS data\n"
         reload_sports()
     if name == 'LEAGUES' or name == 'ALL':
-        print "\nUpdating bbninja LEAGUE data\n"
+        print "\nUpdating LEAGUE data\n"
         reload_leagues()
     if name == 'MATCHES' or name == 'ALL':
-        print "\nUpdating bbninja MATCH data\n"
+        print "\nUpdating MATCH data\n"
         reload_matches()
     if name == 'ODDS' or name == 'ALL':
-        print "\nUpdating bbninja ODDS data\n"
+        print "\nUpdating ODDS data\n"
         reload_odds()
 
 if __name__ == "__main__":
@@ -87,8 +87,8 @@ if __name__ == "__main__":
    print "\n\nStarting data downloader ...\n"
    run = None
    while run != 'n':
-      print "\nNew iteration for updating bbninja source data ...\n"
+      print "\nNew iteration for updating source data ...\n"
       reload()
-      print "\niteration completed for updating bbninja source data ...\n"
+      print "\niteration completed for updating source data ...\n"
       print "\nAbout to sleep for %s secs" % SLEEPTIME
       time.sleep(SLEEPTIME)
