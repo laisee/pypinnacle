@@ -1,0 +1,4 @@
+isodate==0.5.4
+peewee==2.6.4
+PyMySQL==0.6.7
+requests==2.8.1
