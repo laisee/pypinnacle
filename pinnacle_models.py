@@ -54,4 +54,8 @@ class Sport(BaseModel):
 
     class Meta:
         db_table = 'sport'
+        
+if __name__ == "__main__":
+    database.connect()
+    database.create_tables([Game, League, Matches, Odds, Sport], safe=True)
 
