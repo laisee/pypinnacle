@@ -49,6 +49,11 @@ def add_update_odds(data):
 def add_update_record(entity,data):
     count = 0
     query = "select * from %s where id = %s" % (entity, (data.id))
+    try:
+        database.connect()
+    except OperationalError as e:
+        print "Exception in database connection:", e
+        exit(1)
     if entity.upper() == 'SPORT':
         for sport in Sport.raw(query):
             count += 1
