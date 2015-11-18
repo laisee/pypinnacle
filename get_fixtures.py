@@ -1,8 +1,9 @@
-from pinnacle_utility import Headers, BaseURL, CallAPI, LeagueLOL
+import config
+from pinnacle_utility import set_headers, call_api, league_lol
 
 def get_data():
-    url = BaseURL() + 'fixtures?sportId=12&leaguesids='+LeagueLOL()
-    resp = CallAPI(url,'JSON',Headers())
+    url = config.base_url + 'fixtures?sportId=12&leaguesids='+ league_lol()
+    resp = call_api(url, 'JSON', set_headers())
     print resp
     return resp
 
