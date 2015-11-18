@@ -127,11 +127,16 @@ def call_api(url, format, hdrs=None, params=None):
     try:
         response = requests.get(url, headers=hdrs)
         response.raise_for_status()
-        if format == 'XML':
-            return response.text
+        # no status code exception raised but empty response body
+        if len(response.text) == 0:
+            print "ERROR: Valid empty response, please check request parameters."
+            return None
         else:
-            print response
-            return response.json()
+            if format == 'XML':
+                return response.text
+            else:
+                print response
+                return response.json()
     except Exception as e:
         print "Exception in API request %s : %s " % (url, e)
         print '-' * 60
