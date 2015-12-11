@@ -16,10 +16,11 @@ class Match(object):
     def __init__(self, id, start, team1, team2, league=None):
         self.id = id
         self.start = start
-        self.team1 = team1
-        self.team2 = team2
+        self.team1 = str(team1)
+        self.team2 = str(team2)
         self.league = league
         self.timestamp = int(time.time())
+        print self.team2
 
     def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__,sort_keys=True, indent=4)
