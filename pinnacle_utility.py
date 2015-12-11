@@ -35,8 +35,7 @@ def add_update_odds(data):
         print "Added Odds with ID %s and Event ID %s" % (odds.id, odds.event)
     else:
         odds = Odds.select(Odds.event==data.event_id).limit(1)[0]
-        print ("Found Odds with Event ID %s  ts: %s" % (data.event_id, 
-               odds.timestamp))
+        print ("Found Odds with Event ID %s  ts: %s" % (data.event_id, odds.timestamp))
         #if (odds.team1_odds != data.team1_odds or
         #    odds.team2_odds != data.team2_odds):
         #    odds.team1_odds = data.team1_odds
@@ -91,19 +90,13 @@ def add_update_record(entity,data):
             count += 1
         if count == 0:
             print 'No ',entity,' record found for ID == ',data.id
-            Matches.create(
-                id=data.id, start=data.start, team1=data.team1,
-                team2=data.team2, timestamp=get_timestamp())
+            Matches.create(id=data.id, start=data.start, team1=data.team1, team2=data.team2, timestamp=get_timestamp())
             match = Matches.get(Matches.id==data.id)
-            print (match.id, match.start, match.team1, match.team2, 
-                  match.timestamp)
+            print (match.id, match.start, match.team1, match.team2, match.timestamp)
         else:
             match = Matches.get(Matches.id==data.id)
-            print ('Found ',entity,' with ID',str(data.id), ' ts ',
-                   match.timestamp)
+            print ('Found ',entity,' with ID',str(data.id), ' ts ', match.timestamp)
             match.start = data.start,
-            match.team1 = data.team1,
-            match.team2 = data.team2,
             match.timestamp = get_timestamp()
             match.save()
     else:
@@ -121,9 +114,9 @@ def encoded_auth(username, pswd):
    return b64creds
 
 def call_api(url, format, hdrs=None, params=None):
-    print "URL ", url 
     if params:
        url = "%s%s" % (url, params)
+    print url
     try:
         response = requests.get(url, headers=hdrs)
         response.raise_for_status()
@@ -135,7 +128,6 @@ def call_api(url, format, hdrs=None, params=None):
             if format == 'XML':
                 return response.text
             else:
-                print response
                 return response.json()
     except Exception as e:
         print "Exception in API request %s : %s " % (url, e)

@@ -13,7 +13,6 @@ from get_fixtures import get_data as get_fixtures
 from get_odds import get_data as get_odds 
 from pinnacle_utility import add_update_record, add_update_odds
 
-
 def reload_odds():
     data = get_odds()
     #if data:
@@ -64,9 +63,7 @@ def reload_matches():
     if data:
         for league in data["league"]:
             for event in league["events"]:
-                print ("Match id : %s starts at %s : Team 1 %s VS! Team 2 %s "
-                       % (event["id"], event["starts"], event["home"], 
-                        event["away"]))
+                print ("Match id : %s starts at %s : Team 1 %s VS Team 2 %s " % (event["id"], event["starts"], event["home"], event["away"]))
                 match = MT.Match(
                                  event["id"],
                                  isodate.parse_datetime(event["starts"]),
@@ -123,7 +120,7 @@ if __name__ == "__main__":
     run = None # is this needed?
     while True:
         print "\nNew iteration for updating source data ...\n"
-        reload()
+        reload('MATCHES')
         print "\niteration completed for updating source data ...\n"
         print "\nAbout to sleep for %s secs" % config.SLEEPTIME
         time.sleep(config.SLEEPTIME)
