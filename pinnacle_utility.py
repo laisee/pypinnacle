@@ -1,7 +1,5 @@
 import base64, json, sys, time, traceback
-
 import requests
-
 import config
 from pinnacle_models import *
 
@@ -58,9 +56,7 @@ def add_update_record(entity,data):
             count += 1
         if count == 0:
             print 'No ', entity,' record found for ID == ', data.id
-            Sport.create(
-                         id=data.id, name=data.name, 
-                         timestamp=get_timestamp())
+            Sport.create( id=data.id, name=data.name, timestamp=get_timestamp())
             sport = Sport.get(Sport.id==data.id)
             #print sport.id, sport.name, sport.timestamp
         else:
@@ -74,15 +70,13 @@ def add_update_record(entity,data):
             count += 1
         if count == 0:
             print 'No ',entity,' record found for ID == ',data.id
-            League.create(
-                          id=data.id, name=data.name, hometeam=data.hometeam,
-                          timestamp=get_timestamp())
+            print ' adding record ', data.id, ' with name ',data.name
+            League.create( id=data.id,name=data.name, hometeam=data.hometeam, timestamp=get_timestamp(), sport_id = 12)
             league = League.get(League.id==data.id)
-            print league.id, league.name, league.timestamp
+            print league.id, league.name,league.game, league.sport, league.timestamp
         else:
             league = League.get(League.id==data.id)
-            print "Found League with ID",str(data.id), ' ts ', league.timestamp
-            league.name = data.name
+            print "Found League with ID",str(data.id), ' name: ', league.name,' ts ', league.timestamp
             league.timestamp = get_timestamp()
             league.save()
     elif entity.upper() == 'MATCHES':

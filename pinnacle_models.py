@@ -18,11 +18,11 @@ class Game(BaseModel):
         db_table = 'game'
 
 class League(BaseModel):
-    game = IntegerField(db_column='game_id', null=True)
-    hometeam = CharField()
     id = IntegerField(index=True)
+    game = IntegerField(db_column='game_id')
+    hometeam = CharField()
     name = CharField()
-    sport = IntegerField(db_column='sport_id', null=True)
+    sport = IntegerField(db_column='sport_id')
     timestamp = IntegerField()
 
     class Meta:
