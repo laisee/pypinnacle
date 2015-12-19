@@ -71,6 +71,7 @@ def reload_matches():
                 add_update_record('Matches', match)
 
 def reload_leagues():
+    SPORT_ID = 88
     data = get_leagues()
     if data:
          xmldoc = minidom.parseString(data)
@@ -78,12 +79,8 @@ def reload_leagues():
          for child in leagues:
              #print(' League['+child.attributes["id"].value+'] - ' +
              #      child.firstChild.nodeValue)
-             lg = LG.League(
-                            child.attributes["id"].value, 
-                            child.firstChild.nodeValue, 
-                            child.attributes["homeTeamType"].value)
-             #print ('League ['+ str(lg.id) +'] - ' + lg.name + 
-             #       ' downloaded @ ' + str(lg.timestamp))
+             lg = LG.League( child.attributes["id"].value, child.firstChild.nodeValue, child.attributes["homeTeamType"].value)
+             print ('League ['+ str(lg.id) +'] - ' + lg.name + ' downloaded @ ' + str(lg.timestamp))
              add_update_record('League', lg)
 
 def reload_sports():
@@ -117,10 +114,9 @@ def reload(name='ALL'):
 
 if __name__ == "__main__":
     print "\n\nStarting data downloader ...\n"
-    run = None # is this needed?
     while True:
         print "\nNew iteration for updating source data ...\n"
-        reload('MATCHES')
+        reload()
         print "\niteration completed for updating source data ...\n"
         print "\nAbout to sleep for %s secs" % config.SLEEPTIME
         time.sleep(config.SLEEPTIME)
