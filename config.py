@@ -5,6 +5,7 @@ config.py
 """
 
 base_url = 'https://api.pinnaclesports.com/v1/'
-username = 'XXXXXXXXX'
-pswd = 'XXXXXXXXX&&'
+API_TOKEN = 'R0M4MDk0NzQ6TGFpc2VlODgmJg=='
 SLEEPTIME = 60 # seconds
+username=None
+pswd=None

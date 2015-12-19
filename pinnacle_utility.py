@@ -4,11 +4,9 @@ import config
 from pinnacle_models import *
 
 def league_lol():
-    # return ("5474,4586, 191533,5024,5467,5072,48012,9440,4680, 4979, 191468,
-    #          10269, 9754, 10392, 187724, 5625, 7245, 10422, 9457, 10093, 
-    #          9667, 6262, 192095")
+    # return ("5474,4586, 191533,5024,5467,5072,48012,9440,4680, 4979, 191468, 10269, 9754, 10392, 187724, 5625, 7245, 10422, 9457, 10093, 9667, 6262, 192095")
     return "149079"
-    
+
 def get_timestamp():
     return time.mktime(time.gmtime())
 
@@ -103,8 +101,11 @@ def set_headers():
     auth_header = { 'Authorization': 'Basic ' + credentials }
     return auth_header
 
-def encoded_auth(username, pswd):
-   b64creds = base64.b64encode(":".join([username, pswd]))
+def encoded_auth(username=None, pswd=None):
+   if username and paswd:
+      b64creds = base64.b64encode(":".join([username, pswd]))
+   else:
+      b64creds = config.API_TOKEN
    return b64creds
 
 def call_api(url, format, hdrs=None, params=None):
