@@ -4,8 +4,11 @@
 config.py
 """
 
+import os
+
+
 base_url = 'https://api.pinnaclesports.com/v1/'
-API_TOKEN = 'R0M4MDk0NzQ6TGFpc2VlODgmJg88'
-SLEEPTIME = 60 # seconds
-username=None
-pswd=None
+api_token = os.environ.get('PINNACLE_API_TOKEN')
+SLEEPTIME = 60  # seconds
+username = None
+pswd = None

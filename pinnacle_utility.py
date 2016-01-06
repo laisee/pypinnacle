@@ -105,7 +105,7 @@ def encoded_auth(username=None, pswd=None):
    if username and paswd:
       b64creds = base64.b64encode(":".join([username, pswd]))
    else:
-      b64creds = config.API_TOKEN
+      b64creds = config.api_token
    return b64creds
 
 def call_api(url, format, hdrs=None, params=None):
